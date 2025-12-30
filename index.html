@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fifo1280 | Edits Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
+        
+        :root { --bg: #050505; --text: #ffffff; --mhd: #3b82f6; --st: #e11d48; }
+        .light-mode { --bg: #f8fafc; --text: #0f172a; }
+        
+        body { background-color: var(--bg); color: var(--text); transition: all 0.4s ease; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; }
+        
+        /* Animace pro Stranger Things nadpis */
+        .st-title {
+            color: #e11d48;
+            text-shadow: 0 0 10px #e11d48, 0 0 20px #e11d48;
+            animation: flicker 3s infinite;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+            20%, 24%, 55% { opacity: 0.7; text-shadow: none; }
+        }
+
+        .mhd-card:hover { border-color: var(--mhd); box-shadow: 0 0 30px rgba(59, 130, 246, 0.2); transform: scale(1.02); }
+        .st-card:hover { border-color: var(--st); box-shadow: 0 0 30px rgba(225, 29, 72, 0.2); transform: scale(1.02); }
+        .admin-panel { display: none; }
+    </style>
+</head>
+<body>
+
+    <nav class="p-4 glass sticky top-4 z-50 mx-4 md:mx-auto max-w-5xl flex justify-between items-center">
+        <div class="font-black italic text-xl tracking-tighter uppercase">FIFO<span class="text-red-600 font-bold">1280</span></div>
+        <div class="flex items-center gap-4">
+            <button onclick="toggleTheme()" class="w-10 h-10 glass flex items-center justify-center rounded-full"><i id="themeIcon" class="fas fa-moon"></i></button>
+            <button onclick="toggleLogin()" class="bg-white text-black px-4 py-2 rounded-xl font-bold text-xs">ADMIN</button>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto p-6">
+        
+        <header class="py-16 text-center" data-aos="zoom-in">
+            <h1 class="text-6xl md:text-8xl font-black mb-4 tracking-tighter">EDITS <span class="text-red-600">HUB</span></h1>
+            <p class="opacity-50 italic text-lg">MHD & STRANGER THINGS EDITY BY FIFO1280</p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-20">
+            
+            <div class="mhd-card glass p-8 flex flex-col items-center transition-all duration-500 border-2 border-transparent" data-aos="fade-right">
+                <div class="w-16 h-16 bg-blue-600/20 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/20">
+                    <i class="fas fa-bus text-3xl text-blue-500"></i>
+                </div>
+                <h2 class="text-3xl font-black mb-4 uppercase">MHD Edity</h2>
+                <p class="text-gray-400 text-center mb-8 h-20">Vše o dopravě. Hlášení, autobusy, vlaky a tramvaje v jednom editu.</p>
+                
+                <a href="https://drive.google.com/drive/folders/TVUJ_MHD_ODKAZ" target="_blank" class="w-full py-4 bg-blue-600 hover:bg-blue-500 rounded-2xl font-black text-center transition flex items-center justify-center gap-3">
+                    <i class="fab fa-google-drive"></i> OTEVŘÍT MHD DISK
+                </a>
+            </div>
+
+            <div class="st-card glass p-8 flex flex-col items-center transition-all duration-500 border-2 border-transparent" data-aos="fade-left">
+                <div class="w-16 h-16 bg-red-600/20 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-red-500/20">
+                    <i class="fas fa-ghost text-3xl text-red-500"></i>
+                </div>
+                <h2 class="text-3xl font-black mb-4 st-title">Stranger Things</h2>
+                <p class="text-gray-400 text-center mb-8 h-20">Vítej v Hawkins. Edity zaměřené na postavy a temnou atmosféru Upside Down.</p>
+                
+                <a href="https://drive.google.com/drive/folders/TVUJ_ST_ODKAZ" target="_blank" class="w-full py-4 bg-red-600 hover:bg-red-500 rounded-2xl font-black text-center transition flex items-center justify-center gap-3 shadow-lg shadow-red-900/20">
+                    <i class="fab fa-google-drive"></i> OTEVŘÍT ST DISK
+                </a>
+            </div>
+
+        </div>
+
+        <section class="grid md:grid-cols-2 gap-8 mb-20">
+            <div class="glass p-8 flex items-center gap-6" data-aos="fade-up">
+                <div class="text-4xl text-green-500 font-black italic">0,-</div>
+                <div>
+                    <h4 class="font-bold text-xl uppercase">Vždy Zdarma</h4>
+                    <p class="text-sm opacity-50 font-medium">Neplať za edity. Stačí mi tvoje podklady!</p>
+                </div>
+            </div>
+            <a href="https://discord.gg/S8NcphAzfF" target="_blank" class="bg-[#5865F2] p-8 rounded-[24px] flex items-center justify-between hover:scale-[1.02] transition shadow-xl group">
+                <div>
+                    <h4 class="font-black text-xl uppercase text-white">Discord Server</h4>
+                    <p class="text-sm text-white/70">Zde mi posílej své podklady</p>
+                </div>
+                <i class="fab fa-discord text-4xl text-white group-hover:rotate-12 transition"></i>
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="py-10 text-center opacity-20 text-xs font-bold tracking-widest uppercase">
+        © 2025 FIFO1280 EDITS | Hawkins & Transport
+    </footer>
+
+    <div id="loginModal" class="fixed inset-0 bg-black/95 hidden z-[100] flex items-center justify-center p-4">
+        <div class="glass p-8 w-full max-w-sm">
+            <h2 class="text-2xl font-bold mb-6 text-center">Admin FIFO</h2>
+            <input type="password" id="adminPass" placeholder="Heslo" class="w-full p-4 bg-white/10 rounded-xl mb-4 text-white outline-none">
+            <button onclick="checkLogin()" class="w-full bg-red-600 py-4 rounded-xl font-bold">VSTOUPIT</button>
+            <button onclick="toggleLogin()" class="w-full mt-4 text-sm opacity-50">ZAVŘÍT</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        function toggleTheme() { document.body.classList.toggle('light-mode'); }
+        function toggleLogin() { document.getElementById('loginModal').classList.toggle('hidden'); }
+        function checkLogin() {
+            if(document.getElementById('adminPass').value === 'mhdst2025') {
+                alert('Vítej!'); toggleLogin();
+            } else { alert('Špatné heslo!'); }
+        }
+    </script>
+</body>
+</html>
